@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <script src="https://chat.fuguchat.com/js/widget.js"></script>
+    <title>Hippo</title>
+  </head>
+  <script lang>
+    function loadHippo(analyticsData) {
+      initHippo({
+        collapseType: 'hide',
+        ...analyticsData,
+      });
+    }
+
+    window.addEventListener('message', e => {
+      if (e.data && e.data.type && e.data.type == 'Collapse') {
+        window.ReactNativeWebView.postMessage('hippo-close');
+      }
+    });
+
+    // window.addEventListener('load', loadHippo, false);
+  </script>
+  <body style="background-color: transparent;">
+    <h1 style="color: blue;">
+      loading chat
+    </h1>
+  </body>
+</html>
